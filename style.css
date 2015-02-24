@@ -1,0 +1,57 @@
+a:link{
+	color: green;
+	
+}
+a:visited{
+	color: gray;
+}
+body{
+	background-size: auto;
+}
+.media-button{
+}
+.button {
+	background-color: #000000;
+	color: #FFFFFF;
+	padding: 10px;
+	text-align: center;
+}
+.feed{
+	color: green;
+	width: fill;
+}
+
+.user-selector{
+	color: red;
+	width: 20%
+}
+
+.username{
+	text-align: center;
+	color: purple;
+}
+
+.message-box{
+	width: 20%;
+}
+.message{
+	color: red;
+
+}
+
+.timestamp{
+	color: blue;
+}
+.post-content{
+	color: red;
+}
+
+.user-post{
+	text-align: center;
+	width: 20%;
+	padding: 15px;
+}
+
+.profile{
+	width: 20%;
+}
