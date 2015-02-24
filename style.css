@@ -10,7 +10,7 @@ body{
 }
 
 .explosion{
-	background: url(/explosion1.gif);
+	background: url("/explosion1.gif");
 	background-size: cover;
 }
 
