@@ -8,11 +8,11 @@ else
 	echo "Quickly pushing website..."
 
 	echo -n "Adding files..."
-	git add * 2> /dev/null
+	git add *
 	echo "Done"
 
 	echo -n "Commiting Changes..."
-	git commit -m "$@" 2> /dev/null
+	git commit -m "$@"
 	echo "Done"
 	echo "Commit Message: $@"
 
