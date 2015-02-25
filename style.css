@@ -5,6 +5,7 @@ a:link{
 a:visited{
 	color: gray;
 }
+
 body{
 	background-size: auto;
 }
@@ -17,9 +18,13 @@ td{
 	padding: 5px;
 }
 .my-projects{
-	padding
-
 }
+
+.thumb{
+	width: 50px;
+	height: 50px;
+}
+
 
 .explosion{
 	background: url("/explosion1.gif");
