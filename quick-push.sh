@@ -2,6 +2,7 @@
 
 if [ $# -lt 1 ]
 then
+	echo "Quickly push git repo to remote"
 	echo "Usage: quick-push.sh [COMMIT_MESSAGE]"
 	exit 1
 else
