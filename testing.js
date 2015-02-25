@@ -1,0 +1,3 @@
+function doAlert(){
+	alert("Hey");	
+}
