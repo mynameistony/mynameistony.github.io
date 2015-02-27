@@ -3,7 +3,7 @@ var volumeUnits = ["Fl. Oz", "Cups", "Pints", "Quarts", "Gallons", "Liters"]; //
 var tempUnits = ["Farenheit", "Celsius", "Kelvin"];
 
 function actuallyConvert(unitType, startUnit, endUnit, amount){
-	var result = "Haven't converted yet";
+	var result = "I don't know how many";
 	switch(unitType){
 		case "Length":
 			switch(startUnit){
@@ -223,8 +223,10 @@ function actuallyConvert(unitType, startUnit, endUnit, amount){
 				case "Farenheit":
 					switch(endUnit){
 						case "Kelvin":
+							result = "i don't know how many";
 						break;
 						case "Celsius":
+							result = (amount - 32) * (5/9);
 						break;
 					}
 				break;
@@ -233,6 +235,7 @@ function actuallyConvert(unitType, startUnit, endUnit, amount){
 						case "Kelvin":
 						break;
 						case "Farenheit":
+							result = (amount + 32) / (9/5);
 						break;
 					}
 				break;
@@ -248,13 +251,15 @@ function actuallyConvert(unitType, startUnit, endUnit, amount){
 		break;
 
 		default:
+			result = "not really anything...";
 		break;
 
 
 
 	}
 
-	return result;
+	var m = amount + " " + startUnit + " is " + result + " " + endUnit;
+	return m;
 
 }
 
