@@ -372,7 +372,7 @@ function setUnitType(){
 		break;
 
 		default:
-			alert("Pick a unit!");
+			//alert("Pick a unit!");
 		break;
 
 	}

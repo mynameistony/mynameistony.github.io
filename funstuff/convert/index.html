@@ -1,0 +1,32 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<script src="/scripts.js"></script>
+
+	<title id="title">Convert some units, bro!</title>
+	<center>
+		<h1 id="header"><a href="/">My Name Is Tony</a></h1>
+		<p>and this is a unit converter...</p>
+	</center>
+</head>
+<body>
+	<center>
+		<div class="unit-converter">
+			<p>Here's a simple unit converter</p>
+			<select onchange="setUnitType()" id="current-unit-type">
+				<option checked="true">Select unit type</option>
+				<option>Length</option>
+				<option>Volume</option>
+				<option>Temperature</option>
+			</select>
+			<input onchange="convert()" id="start-amount" type="number" value="0">
+
+			<select onchange="setStartUnit()" id="start-unit"></select>
+			to
+			<select onchange="convert()" id="end-unit"></select>
+			<b id="converted-value"></b>
+			<script>setUnitType()</script>
+		</div>
+		<br>
+		<a href="/funstuff">More stuff</a>
+	</center>
+</body>
