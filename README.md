@@ -1,4 +1,5 @@
-Gonna be a website soon
+My name is Tony, this is my website.
 
-Let's see how this goes
+This is actually more of a testing ground for my web development and 
+a place to show my stuff.
 
