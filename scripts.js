@@ -1,3 +1,8 @@
+function setUnitType(){
+	
+	alert("Ok");
+}
+
 function sayGreeting(){
 	var person = prompt("Who the hell are you?");
 	var newTitle = "";

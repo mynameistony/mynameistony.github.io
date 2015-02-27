@@ -30,10 +30,10 @@ Here's Some Fun Stuff
 		
 		<form name="convert">
 		<input id="startAmount" type="number" value="0">
-		<div class="unit-type">
-		<input onchange="setUnitType" type="radio" name="sex" value="Length">Length
-		<input onchange="setUnitType" type="radio" name="sex" value="Volume">Volume
-		<input onchange="setUnitType" type="radio" name="sex" value="Temperature">Temperature
+		<div class="unit-type-selector">
+		<input onchange="setUnitType()" type="radio" id="unit-type" value="Length">Length
+		<input onchange="setUnitType()" type="radio" id="unit-type" value="Volume">Volume
+		<input onchange="setUnitType()" type="radio" id="unit-type" value="Temperature">Temperature
 		</div>
 		</form>
 	</p>
