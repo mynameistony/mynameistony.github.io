@@ -1,6 +1,57 @@
 function setUnitType(){
-	
-	alert("Ok");
+	var thisType = document.getElementById("current-unit-type").value;
+
+	switch(thisType){
+
+		case "Volume":
+			selectStartUnit = document.getElementById('start-unit');
+			while (selectStartUnit.hasChildNodes()) {  
+    				selectStartUnit.removeChild(selectStartUnit.firstChild);
+			}
+		break;
+
+		case "Length":
+			selectStartUnit = document.getElementById('start-unit');
+			selectEndUnit = document.getElementById('end-unit');
+
+			while (selectStartUnit.hasChildNodes()) {  
+    				selectStartUnit.removeChild(selectStartUnit.firstChild);
+			}
+
+			while (selectEndUnit.hasChildNodes()) {  
+    				selectEndUnit.removeChild(selectEndUnit.firstChild);
+			}
+
+			var lengthUnits = ["Inches", "Feet", "Yards", "Miles","Meters"];
+			for (var i = 0; i<lengthUnits.length; i++){
+				var opt = document.createElement('option');
+				opt.value = lengthUnits[i];
+				opt.innerHTML = lengthUnits[i];
+				selectStartUnit.appendChild(opt);
+			}
+   
+		break;
+
+		case "Temperature":
+			selectStartUnit = document.getElementById('start-unit');
+			while (selectStartUnit.hasChildNodes()) {  
+    				selectStartUnit.removeChild(selectStartUnit.firstChild);
+			}
+
+		break;
+
+		default:
+			alert("Pick a unit dumbass!");
+
+			selectStartUnit = document.getElementById('start-unit');
+			while (selectStartUnit.hasChildNodes()) {  
+    				selectStartUnit.removeChild(selectStartUnit.firstChild);
+			}
+
+		break;
+
+	}
+//	alert(thisType);
 }
 
 function sayGreeting(){
