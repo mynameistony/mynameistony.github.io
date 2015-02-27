@@ -29,6 +29,8 @@ Here's Some Fun Stuff
 		</form>
 	</p>	
 		<div class="unit-converter">
+
+
 		<p>Here's a simple unit converter</p>
 		<select onchange="setUnitType()" id="current-unit-type">
 			<option checked="true">Select unit type</option>
@@ -36,17 +38,16 @@ Here's Some Fun Stuff
 			<option>Volume</option>
 			<option>Temperature</option>
 		</select>
-		<br>
-		<input id="start-amount" type="number" value="0">
+		<input onchange="convert()" id="start-amount" type="number" value="0">
 
-		<select onchange="convert()" id="start-unit">
+		<select onchange="setStartUnit()" id="start-unit">
 		</select>
 		to
 		<select onchange="convert()" id="end-unit">
 		</select>
 		=
 		<b id="converted-value"></b>
-
+		<script>setUnitType()</script>
 		</div>
 </center>
 </body
