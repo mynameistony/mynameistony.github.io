@@ -12,6 +12,13 @@ var insultNouns = ["cock","dick","ass","nigger","jew","ball","pussy"];
 
 var insultVerbs = ["fuck","suck","lick","sniff","tast"];
 
+function setUsernameCookie (){
+		var cookie = "username="+prompt("Who the hell are ya?");
+		
+		alert(cookie);
+	
+}
+
 function randomInsult(){
 
 	var randNoun1 = insultNouns[Math.floor(Math.random()*insultNouns.length)];
