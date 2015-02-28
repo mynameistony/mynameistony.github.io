@@ -16,7 +16,9 @@ function setUsernameCookie (){
 		var username= prompt("Who the hell are ya?")
 		var cookie = "username=" + username;
 		
-		alert(cookie);
+		document.cookie=cookie;
+		
+		//alert(cookie);
 	
 }
 
