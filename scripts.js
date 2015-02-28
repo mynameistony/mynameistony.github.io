@@ -8,13 +8,30 @@ var compliments = [
 "there will be more compliments soon..."
 ];
 
+var insultNouns = ["cock","dick","ass","nigger","jew","ball","pussy"];
+
+var insultVerbs = ["fuck","suck","lick","sniff","tast"];
+
+function randomInsult(){
+
+	var randNoun1 = insultNouns[Math.floor(Math.random()*insultNouns.length)];
+	var randNoun2 = insultNouns[Math.floor(Math.random()*insultNouns.length)];
+
+	var randVerb1 = insultVerbs[Math.floor(Math.random()*insultVerbs.length)];
+	var randVerb2 = insultVerbs[Math.floor(Math.random()*insultVerbs.length)];
+
+
+	var thisInsult = "you are a " + randNoun1 + " " + randVerb1 + "ing " + randNoun2 + " " + randVerb2 + "er";
+
+	var insultElement = document.getElementById("insult");
+
+	insultElement.innerHTML = thisInsult;
+
+}
+
 function randomCompliment(){
 
-
-	var randomNumber=Math.floor(Math.random()*compliments.length)
-
-
-	var thisCompliment = compliments[randomNumber];
+	var thisCompliment = compliments[Math.floor(Math.random()*compliments.length)];
 
 	var complimentElement = document.getElementById("compliment");
 	//var title = document.getElementById("title");
