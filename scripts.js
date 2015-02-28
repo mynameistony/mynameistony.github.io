@@ -2,6 +2,26 @@ var lengthUnits = ["Inches", "Feet", "Yards", "Miles","Meters"];
 var volumeUnits = ["Fl. Oz", "Cups", "Pints", "Quarts", "Gallons", "Liters"]; //Liter is French for "Give me some FUCKING cola"!
 var tempUnits = ["Farenheit", "Celsius", "Kelvin"];
 
+var compliments = [
+"you're beautiful!", "you're perfect!", "don't ever change!", "you are wonderful!", "I like your face...", "you should know that you are perfect :)",
+"you are a human.", "you...uhhh...I dunno...maybe...ummmmm...I got nothing :P", "it's kind of hard to come up with compliments."
+];
+
+function randomCompliment(){
+
+
+	var randomNumber=Math.floor(Math.random()*compliments.length)
+
+
+	var thisCompliment = compliments[randomNumber];
+
+	var complimentElement = document.getElementById("compliment");
+	//var title = document.getElementById("title");
+
+	//title.innerHTML = thisCompliment;
+	complimentElement.innerHTML = thisCompliment;
+}
+
 function actuallyConvert(unitType, startUnit, endUnit, amount){
 	var result = "I don't know how many";
 	switch(unitType){
