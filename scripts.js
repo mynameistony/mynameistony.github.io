@@ -13,7 +13,8 @@ var insultNouns = ["cock","dick","ass","nigger","jew","ball","pussy"];
 var insultVerbs = ["fuck","suck","lick","sniff","tast"];
 
 function setUsernameCookie (){
-		var cookie = "username="+prompt("Who the hell are ya?");
+		var username= prompt("Who the hell are ya?")
+		var cookie = "username=" + username;
 		
 		alert(cookie);
 	
