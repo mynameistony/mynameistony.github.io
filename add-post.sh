@@ -8,10 +8,10 @@ echo $(cat post.tmp | sed s/"$"/"<br>"/) > post.tmp
 
 cat index.html | sed s/"<\/body>"// | sed s/"<\/center>$"// > index.tmp
 
-echo "<div class=\"post\">" >> index.tmp
+echo "<p><div class=\"post\">" >> index.tmp
 echo "<div class=\"post-time\">$TIMESTAMP</div>" >> index.tmp
 echo "<div class=\"post-content\">$(cat post.tmp)</div>" >> index.tmp
-echo "</div>" >> index.tmp
+echo "</div></p>" >> index.tmp
 
 cat index.tmp > index.html
 
