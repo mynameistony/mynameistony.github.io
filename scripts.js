@@ -18,6 +18,7 @@ function setUsernameCookie (){
 		
 		document.cookie=cookie;
 		
+		document.getElementById("username").innerHTML=cookie;
 		//alert(cookie);
 	
 }
