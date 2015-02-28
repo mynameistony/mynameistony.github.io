@@ -4,7 +4,8 @@ var tempUnits = ["Farenheit", "Celsius", "Kelvin"];
 
 var compliments = [
 "you're beautiful!", "you're perfect!", "don't ever change!", "you are wonderful!", "I like your face...", "you should know that you are perfect :)",
-"you are a human.", "you...uhhh...I dunno...maybe...ummmmm...I got nothing :P", "it's kind of hard to come up with compliments."
+"you are a human.", "you...uhhh...I dunno...maybe...ummmmm...I got nothing :P", "it's kind of hard to come up with compliments.",
+"there will be more compliments soon..."
 ];
 
 function randomCompliment(){
