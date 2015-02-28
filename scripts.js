@@ -18,7 +18,7 @@ function setUsernameCookie (){
 		
 		document.cookie=cookie;
 		
-		var helloUser = "Hello, " + username;
+		var helloUser = "Hello, " + "<i>" + username + "</i>";
 		document.getElementById("username").innerHTML=helloUser;
 		//alert(cookie);
 	
