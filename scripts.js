@@ -14,13 +14,22 @@ var insultVerbs = ["fuck","suck","lick","sniff","tast"];
 
 function setUsernameCookie (){
 		var username= prompt("Who the hell are ya?")
-		var cookie = "username=" + username;
 		
-		document.cookie=cookie;
-		
-		var helloUser = "Hello, " + "<i>" + username + "</i>";
-		document.getElementById("username").innerHTML=helloUser;
-		//alert(cookie);
+		if(username != null){
+			if(username != ""){
+				var cookie = "username=" + username;
+				
+				document.cookie=cookie;
+				
+				var helloUser = "Hello, " + "<i>" + username + "</i>";
+				document.getElementById("username").innerHTML=helloUser;
+				document.getElementById("login-button").innerHTML="Change User";				
+			}else{
+				alert("That's not a name!");
+			}
+		}else{
+			alert("or don't login...");
+		}
 	
 }
 
