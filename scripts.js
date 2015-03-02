@@ -13,7 +13,8 @@ var insultNouns = ["cock","dick","ass","nigger","jew","ball","pussy","dong","tit
 var insultVerbs = ["fuck","suck","lick","sniff","tast"];
 
 function blowOutCandles(){
-
+	document.getElementById("message").innerHTML = "Hope you had a wonderful birthday!";
+	document.getElementById("again").innerHTML = "Again!";
 	document.getElementById("cake").src = "/birthdayout.png";
 
 }
