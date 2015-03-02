@@ -12,6 +12,12 @@ var insultNouns = ["cock","dick","ass","nigger","jew","ball","pussy","dong","tit
 
 var insultVerbs = ["fuck","suck","lick","sniff","tast"];
 
+function blowOutCandles(){
+
+	document.getElementById("cake").src = "/birthdayout.png";
+
+}
+
 function setUsernameCookie (){
 		var username= prompt("Who the hell are ya?")
 		
