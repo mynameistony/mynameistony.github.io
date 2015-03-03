@@ -24,7 +24,7 @@ function updateCountdown(){
 
 	var monthsTil = temp.getMonth();
 //Math.abs(today.getMonth() - theDay.getMonth());
-	var daysTil = temp.getDate();
+	var daysTil = temp.getDate() - 1;
 //Math.abs(today.getDate() - theDay.getDate());
 	var hoursTil = temp.getHours() + 8;
 //Math.abs(today.getHours() - theDay.getHours());
