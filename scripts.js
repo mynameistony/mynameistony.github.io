@@ -12,6 +12,32 @@ var insultNouns = ["cock","dick","ass","nigger","jew","ball","pussy","dong","tit
 
 var insultVerbs = ["fuck","suck","lick","sniff","tast"];
 
+function addTodo(){
+	var todoList = document.getElementById("todo-list");
+
+
+	var newTodo = document.createElement('p');
+
+	var newTodoCheckbox = document.createElement('input');
+
+		newTodoCheckbox.type = "checkbox";
+	
+		newTodoCheckbox.name = "newTodo";
+
+		newTodoCheckbox.value = document.getElementById("todo-name").value;
+
+		newTodo.appendChild(newTodoCheckbox);
+
+	var newTodoName = document.createElement('b');
+
+		newTodoName.innerHTML = document.getElementById("todo-name").value;
+
+		newTodo.appendChild(newTodoName);
+
+	
+	todoList.appendChild(newTodo);
+}
+
 function updateCountdown(){
 
 	var theDay = new Date(2015,2,18,0,0,0);
