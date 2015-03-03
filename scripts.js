@@ -11,25 +11,55 @@ var compliments = [
 var insultNouns = ["cock","dick","ass","nigger","jew","ball","pussy","dong","tit","troglodyte"];
 
 var insultVerbs = ["fuck","suck","lick","sniff","tast"];
+
+function updateCountdown(){
+
+	var theDay = new Date(2015,2,18,0,0,0);
+
+	var today = new Date();
+
+	var dif = Number(theDay - today);
+
+	var temp = new Date(dif);
+
+	var monthsTil = temp.getMonth();
+//Math.abs(today.getMonth() - theDay.getMonth());
+	var daysTil = temp.getDate();
+//Math.abs(today.getDate() - theDay.getDate());
+	var hoursTil = temp.getHours() + 8;
+//Math.abs(today.getHours() - theDay.getHours());
+	var minutesTil = temp.getMinutes();
+//Math.abs(today.getMinutes() - theDay.getMinutes());
+	var secondsTil = temp.getSeconds();
+
+	var timer = daysTil  + " days, " + hoursTil + " hours, " + minutesTil + " minutes, and " + secondsTil + " seconds";
+
+	document.getElementById("countdown").innerHTML = timer;
+}
+
 function closeCard(){
-	document.getElementById("card").src ="../cardfront1.png";
-	
-	document.getElementById("card").onclick = openCard;	
+	document.getElementById("card").src ="/resources/card-front.png";
+	document.getElementById("card").onclick = openCard;
+
+	document.getElementById("cake").style.visibility = "hidden";	
 }
 
 function openCard(){
-	document.getElementById("card").src ="../cardopen1.png";
-	
+
+	document.getElementById("cake").style.visibility = "visible";	
+	document.getElementById("card").src ="/resources/card-open.png";
 	document.getElementById("card").onclick = closeCard;
+	document.getElementById("cake").src = "/resources/candles.png";
+	document.getElementById("message").innerHTML = "Now blow out your candles...";
 	
 }
 
 function blowOutCandles(){
-	document.getElementById("message").innerHTML = "Hope you had a wonderful birthday!";
-	document.getElementById("again").innerHTML = "Again!";
-	document.getElementById("cake").src = "../birthdayout.png";
-
+	document.getElementById("message").innerHTML = "Happy birthday!!!!!";
+	document.getElementById("again").innerHTML = "Close the card to do it again";
+	document.getElementById("cake").src = "/resources/candles-out.png";
 }
+//
 
 function setUsernameCookie (){
 		var username= prompt("Who the hell are ya?")
