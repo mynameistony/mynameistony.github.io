@@ -11,11 +11,23 @@ var compliments = [
 var insultNouns = ["cock","dick","ass","nigger","jew","ball","pussy","dong","tit","troglodyte"];
 
 var insultVerbs = ["fuck","suck","lick","sniff","tast"];
+function closeCard(){
+	document.getElementById("card").src ="../cardfront1.png";
+	
+	document.getElementById("card").onclick = openCard;	
+}
+
+function openCard(){
+	document.getElementById("card").src ="../cardopen1.png";
+	
+	document.getElementById("card").onclick = closeCard;
+	
+}
 
 function blowOutCandles(){
 	document.getElementById("message").innerHTML = "Hope you had a wonderful birthday!";
 	document.getElementById("again").innerHTML = "Again!";
-	document.getElementById("cake").src = "/birthdayout.png";
+	document.getElementById("cake").src = "../birthdayout.png";
 
 }
 
