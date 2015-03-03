@@ -12,32 +12,74 @@ var insultNouns = ["cock","dick","ass","nigger","jew","ball","pussy","dong","tit
 
 var insultVerbs = ["fuck","suck","lick","sniff","tast"];
 
-function addTodo(){
-	var todoList = document.getElementById("todo-list");
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+} 
 
+function addTodoCookie(newTodoName){
 
-	var newTodo = document.createElement('p');
+	var numberOfTodos = getCookie("numberOfTodos");
 
-	var newTodoCheckbox = document.createElement('input');
+//	alert("Num: " + numberOfTodos);
 
-		newTodoCheckbox.type = "checkbox";
+	var newTodoCookie = "todo" + numberOfTodos + "=" + newTodoName;
 	
-		newTodoCheckbox.name = "newTodo";
+	document.cookie = newTodoCookie;
 
-		newTodoCheckbox.value = document.getElementById("todo-name").value;
+	numberOfTodos++;
+
+	document.cookie = "numberOfTodos=" + numberOfTodos;
+
+	setTodoFromCookies();
+}
+
+function setTodoFromCookies(){
+
+//	alert("Setting todo list");
+	var todoList = document.getElementById("todo-list");
+	
+	while (todoList.hasChildNodes()) {  
+		todoList.removeChild(todoList.firstChild);
+	}
+
+	for(i = 0; i < getCookie("numberOfTodos"); i++){
+
+		var newTodo = document.createElement('p');
+
+		var newTodoCheckbox = document.createElement('input');
+
+			newTodoCheckbox.type = "checkbox";
+	
+			newTodoCheckbox.name = "newTodo";
+
+			newTodoCheckbox.value = document.getElementById("todo-name").value;
 
 		newTodo.appendChild(newTodoCheckbox);
 
-	var newTodoName = document.createElement('b');
+		var newTodoName = document.createElement('b');
 
-		newTodoName.innerHTML = document.getElementById("todo-name").value;
+			newTodoName.innerHTML = getCookie("todo" + i);
 
 		newTodo.appendChild(newTodoName);
-
 	
-	todoList.appendChild(newTodo);
+		todoList.appendChild(newTodo);
+	}
+
 }
 
+function addTodo(){
+
+	addTodoCookie(document.getElementById("todo-name").value);
+
+	setTodoFromCookies();
+}
 function updateCountdown(){
 
 	var theDay = new Date(2015,2,18,0,0,0);

@@ -9,11 +9,13 @@ My Name Is Tony
 <center>
 	<h1>My Name Is <a href="/feed">Tony</a></h1>
 	<p>and this is a simple todo list maker...</p>
-	<p>don't close this page or it will disappear, I'm working on setting cookies for the todo items</p>
+	<p>This page uses javascript and cookies to remember your todo items, if you close your browser they will be lost.</p>
 
-	<p id="todo-list">
+	<p id="todo-input">
 		<input id="todo-name" type="text">
 		<button id="add-todo" onclick="addTodo()">Add</button>
+		<p id="todo-list"></p>
 	</p>
+	<script>setTodoFromCookies()</script>
 </center>
 </body>
