@@ -42,6 +42,8 @@ function closeCard(){
 	document.getElementById("card").onclick = openCard;
 
 	document.getElementById("cake").style.visibility = "hidden";	
+
+	document.getElementById("message").innerHTML = "Open up your card...";
 }
 
 function openCard(){
@@ -56,7 +58,7 @@ function openCard(){
 
 function blowOutCandles(){
 	document.getElementById("message").innerHTML = "Happy birthday!!!!!";
-	document.getElementById("again").innerHTML = "Close the card to do it again";
+	document.getElementById("again").innerHTML = "Close the card or click here to do it again";
 	document.getElementById("cake").src = "/resources/candles-out.png";
 }
 //
