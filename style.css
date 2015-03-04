@@ -1,3 +1,21 @@
+body{
+	background-color: lightgray;
+}
+.todo-list{
+	width: 50%;
+	background-color: grey;
+}
+
+.todo-item{
+	padding:30px;
+	background-color: red;
+
+}
+
+.todo-text{
+	/*background-color: yellow;	*/
+
+}
 a:link{
 	color: green;
 	
@@ -25,8 +43,6 @@ td{
 	height: 50px;
 }
 
-
-
 .media-button{
 }
 .button {
@@ -38,16 +54,6 @@ td{
 .feed{
 	color: green;
 	width: fill;
-}
-
-.user-selector{
-	color: red;
-	width: 20%
-}
-
-.username{
-	text-align: center;
-	color: purple;
 }
 
 .message-box{
@@ -63,14 +69,4 @@ td{
 }
 .post-content{
 	color: green;
-}
-
-.user-post{
-	text-align: center;
-	width: 20%;
-	padding: 15px;
-}
-
-.profile{
-	width: 20%;
 }

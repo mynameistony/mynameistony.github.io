@@ -12,9 +12,12 @@ My Name Is Tony
 	<p>This page uses javascript and cookies to remember your todo items, if you close your browser they will be lost.</p>
 
 	<p id="todo-input">
-		<input id="todo-name" type="text">
-		<button id="add-todo" onclick="addTodo()">Add</button>
-		<p id="todo-list"></p>
+		<form onsubmit="addTodo()">
+		<input id="todo-name" type="text" placeholder="Enter a todo item" >
+		<input id="add-todo" type="button" value="Add" onclick="addTodo()">
+		</form>
+		<button id="add-todo" onclick="clearTodos()">Clear</button>
+		<p class="todo-list" id="todo-list"></p>
 	</p>
 	<script>setTodoFromCookies()</script>
 </center>

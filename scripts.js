@@ -12,6 +12,21 @@ var insultNouns = ["cock","dick","ass","nigger","jew","ball","pussy","dong","tit
 
 var insultVerbs = ["fuck","suck","lick","sniff","tast"];
 
+function checkTodo(){
+
+
+}
+
+function printTodoHistory(){
+
+}
+
+function clearTodos(){
+	document.cookie = "numberOfTodos=" + 0;
+
+	setTodoFromCookies();
+}
+
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -31,12 +46,11 @@ function addTodoCookie(newTodoName){
 
 	var newTodoCookie = "todo" + numberOfTodos + "=" + newTodoName;
 	
-	document.cookie = newTodoCookie;
-
-	numberOfTodos++;
-
-	document.cookie = "numberOfTodos=" + numberOfTodos;
-
+	if(newTodoName != ""){
+		document.cookie = newTodoCookie;
+		numberOfTodos++;
+		document.cookie = "numberOfTodos=" + numberOfTodos;
+	}
 	setTodoFromCookies();
 }
 
@@ -53,6 +67,10 @@ function setTodoFromCookies(){
 
 		var newTodo = document.createElement('p');
 
+			newTodo.className = "todo-item";
+
+			newTodo.onClick = checkTodo;		
+
 		var newTodoCheckbox = document.createElement('input');
 
 			newTodoCheckbox.type = "checkbox";
@@ -66,6 +84,8 @@ function setTodoFromCookies(){
 		var newTodoName = document.createElement('b');
 
 			newTodoName.innerHTML = getCookie("todo" + i);
+
+			newTodoName.className = "todo-text";
 
 		newTodo.appendChild(newTodoName);
 	
