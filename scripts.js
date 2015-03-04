@@ -12,6 +12,31 @@ var insultNouns = ["cock","dick","ass","nigger","jew","ball","pussy","dong","tit
 
 var insultVerbs = ["fuck","suck","lick","sniff","tast"];
 
+function checkExplosions(){
+	if(getCookie("explosions") == 1){
+		document.getElementById('body').style = "background-image:url('/resources/explosion1.gif')";
+		document.getElementById('explosionToggle').innerHTML = "Less explosions";
+		return true;
+	}
+	else{
+		document.getElementById('body').style = "";
+		document.getElementById('explosionToggle').innerHTML = "More explosions";
+		return false;
+	}
+
+}
+
+function toggleExplosions(){
+	if(checkExplosions() == false){
+		document.cookie = "explosions=" + 1;
+	}
+	else{
+		document.cookie = "explosions=" + 0;
+	
+	}
+	
+}
+
 function checkTodo(){
 
 

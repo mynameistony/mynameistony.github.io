@@ -18,7 +18,7 @@ Here's Some Fun Stuff
 	</p>
 	</center>
 </head>
-<body>
+<body id="body">
 <center>
 <!--	<script>sayGreeting()</script>-->
 	
@@ -34,8 +34,10 @@ Here's Some Fun Stuff
 	<br>
 	<a href="/funstuff/happybirthday">Birthday Card</a>
 	<br>
-
-
+	<b id="countdown">a long time</b></p>
+	<script>setInterval(updateCountdown,1000)</script>
+	<button onclick="toggleExplosions()" id="explosionToggle">More Explosions</button>
+	<script>checkExplosions()</script>
 </center>
-</body
+</body>
 
