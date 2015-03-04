@@ -38,25 +38,23 @@ function getCookie(cname) {
     return "";
 } 
 
-function addTodoCookie(newTodoName){
+function addTodoCookie(newTodoName,newTodoIndex){
 
-	var numberOfTodos = getCookie("numberOfTodos");
+	//alert("Adding item# " + Number(newTodoIndex+1) + " : " + newTodoName);
 
-//	alert("Num: " + numberOfTodos);
-
-	var newTodoCookie = "todo" + numberOfTodos + "=" + newTodoName;
+	var newTodoCookie = "todo" + newTodoIndex + "=" + newTodoName;
 	
 	if(newTodoName != ""){
 		document.cookie = newTodoCookie;
-		numberOfTodos++;
-		document.cookie = "numberOfTodos=" + numberOfTodos;
+		newTodoIndex++;
+		document.cookie = "numberOfTodos=" + newTodoIndex;
 	}
-	setTodoFromCookies();
+
+
 }
 
-function setTodoFromCookies(){
-
-//	alert("Setting todo list");
+function setTodoFromCookies(sizeOfTodo){
+	//alert("Setting todo list: length: " + sizeOfTodo);
 	var todoList = document.getElementById("todo-list");
 	
 	while (todoList.hasChildNodes()) {  
@@ -95,10 +93,13 @@ function setTodoFromCookies(){
 }
 
 function addTodo(){
+	var numberOfTodos = getCookie("numberOfTodos");
 
-	addTodoCookie(document.getElementById("todo-name").value);
+	//alert(numberOfTodos);
 
-	setTodoFromCookies();
+	addTodoCookie(document.getElementById("todo-name").value, numberOfTodos);
+
+	setTodoFromCookies(numberOfTodos);
 }
 function updateCountdown(){
 
