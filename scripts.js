@@ -688,3 +688,36 @@ function calculate(){
 	alert(ans);
 //	document.getElementById("answer").innerHTML = ans;
 }
+
+function checkInput(){
+
+	var answers = ["will","u","go","to","prom","width","mi"];
+	var message = "";
+	var numCorrect = 0;
+
+	for(i = 0; i < 7; i++){
+		thisInput = "input" + i;
+		thisPrompt = "prompt" + i;
+		//alert(thisInput);
+
+		thisValue = document.getElementById(thisInput).value;
+		//alert(thisValue);
+
+		if(thisValue == answers[i]){
+			numCorrect++;
+			message = message + " " + thisValue;
+
+			if(numCorrect == 7){
+				message+="?";
+			}
+
+			document.getElementById("answer").innerHTML = message;
+			document.getElementById(thisPrompt).style = "color:green";
+		}
+		else
+			document.getElementById(thisPrompt).style = "color:red";
+
+		
+	}
+
+}
