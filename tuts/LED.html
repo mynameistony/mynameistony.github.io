@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/styles.css">
+<script src="/scripts.js"></script>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title></title>
+	<meta name="generator" content="LibreOffice 4.2.7.2 (Linux)">
+	<meta name="author" content="Tony Rogers">
+	<meta name="created" content="20150308;0">
+	<meta name="changedby" content="Tony Rogers">
+	<meta name="changed" content="20150308;101934543507429">
+	<meta name="changedby" content="Tony Rogers">
+	<meta name="changedby" content="Tony Rogers">
+	<style type="text/css">
+	<!--
+		@page { margin: 0.79in }
+		p { margin-bottom: 0.1in; color: #000000; line-height: 120% }
+	-->
+	</style>
+</head>
+<body>
+<p align="center" style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; page-break-after: avoid">
+<font face="Liberation Sans, sans-serif"><font size="6" style="font-size: 28pt"><b>Internet
+Led Strip</b></font></font></p>
+<p class="section-header">Intro:</p>
+<p>This is the write-up for my internet controlled LED strip. The
+final product is an LED strip connected to the Internet, hosting a
+webpage that allows anyone choose the strips current light
+configuration. This project touches on most everything I know about
+computers from assembly-level bit banging and other low-level
+hardware interaction, to installing and administering Linux systems,
+to creating programs that work together in a variety of languages, as
+well as web development.</p>
+<p class="section-header">Abstract:</p>
+<p>The Raspberry Pi is connected to the network, and hosting a
+webpage. On the page there is a form that when submitted, causes the
+server to execute a program that sends data about what LEDs to light
+up to the Arduino. The Arduino then interprets the data and tells the
+LED strip what LEDs to light up. Pretty simple right?</p>
+<p class="section-header">Parts:</p>
+<ul>
+	<li><p>1x → Raspberry Pi + SD card (at least 8GB) + power cable</p>
+	<li><p>1x → Arduino (Mega for me, most should work)</p>
+	<li><p>1x → Radioshack LED strip (will post link to specific one)</p>
+	<ul>
+		<li><p>This can be substituted for individual LEDs and TM1801?
+		Chips</p>
+	</ul>
+	<li><p>2x → Female → Male jumper wires</p>
+	<ul>
+		<li><p>For the RPi → Arduino Connection</p>
+	</ul>
+	<li><p>1x → 12v power supply</p>
+	<ul>
+		<li><p>The LED strip requires 12v (see below)</p>
+	</ul>
+	<li><p>1x Ethernet Cable</p>
+	<li><p>1x USB Keyboard (For Pi's first boot)</p>
+	<li><p>1x TV(Also for first boot or if you don't have an SSH client)</p>
+	<li><p>1x Other Computer (To burn ISO to SD)</p>
+</ul>
+<p class="section-header">What you should know/will learn (Topics Covered):</p>
+<ul>
+	<li><p>Programming Languages</p>
+	<ul>
+		<li><p>C/C++ → For the Arduino (<i>also noip client I use had to
+		be compiled from source)</i></p>
+		<li><p>Python → Used by the Raspberry Pi to send data to the
+		Arduino via serial</p>
+		<li><p>BASH → Used by PHP for backend execution (namely to call
+		the Python script...)</p>
+		<li><p>PHP → Used to auto-generate the webpage, as well call the
+		BASH script that calls the Python scripts.</p>
+		<li><p>HTML → This isn't really a “programming” language but
+		is what browser used to render webpages</p>
+		<li><p>Bonus (Not neccessary): Javascript/CSS → Make the site
+		look pretty and do cool things</p>
+	</ul>
+	<li><p>Other Computer Stuff</p>
+	<ul>
+		<li><p>Hardware interaction</p>
+		<ul>
+			<li><p>Interfacing with TM1801? LED driver</p>
+			<li><p>Using serial communication</p>
+		</ul>
+		<li><p>Software:</p>
+		<ul>
+			<li><p>Installing/Configuring a Linux distribution to work for you</p>
+			<li><p>Compiling/building programs from source as well as using
+			scripting languages</p>
+			<li><p>Configuring Apache web server 
+			</p>
+			<li><p>Hexadecimal/Binary</p>
+			<li><p>Basic Git commands</p>
+		</ul>
+	</ul>
+</ul>
+<p><br><br>
+</p>
+<p align="center">Where to begin...</p>
+<p align="left">To me it seems logical to start with the lowest level
+we're dealing with...hardware.</p>
+<p class="section-header" align="left">Arduino + LED strip:</p>
+<ul>
+	<li><p align="left">The LED strip's driver chip must receive a
+	specially designed pulse to display colors.</p>
+	<li><p align="left">A certain pattern of Ons and Offs (High and Low
+	Voltages) over the strips data line is used to encode a hexadecimal
+	number representing the desired color.</p>
+	<li><p align="left">The Arduino listens on the serial wire for a
+	string of characters coming from RPi, if it receives one, it
+	interprets them and sets the strip accordingly.</p>
+	<li><p align="left"><a href="https://github.com/mynameistony/simple-message-board/tree/master/stuff/Arduino">Check
+	the code for more info</a></p>
+	<li><p align="left">Download the Arduino IDE <a href="http://www.arduino.cc/en/Main/Software">from
+	here</a></p>
+	<li><p align="left">Paste the contents 'SerialLEDstrip.ino' into the
+	window</p>
+	<li><p align="left">Click the little towards the top right and
+	select Create New Tab</p>
+	<ul>
+		<li><p align="left">Name it 'stuff.h' and paste in the contents of
+		stuff.h</p>
+	</ul>
+	<li><p align="left">Click upload and hopefully it works :P</p>
+</ul>
+<p align="left">Now for the backbone...</p>
+<p class="section-header">Raspberry Pi:</p>
+<ul>
+	<li><p>Burn the ISO/install the OS to the SD</p>
+	<ul>
+		<li><p>Head on over to the <a href="http://www.raspberrypi.org/downloads/">RPi
+		Download Page</a> and download the latest Raspbian image</p>
+		<li><p>Burn it to the SD card</p>
+		<ul>
+			<li><p>If you're on Windows you need an image burner program (I
+			would get ImgBurn from <a href="https://www.ninite.com/">here</a>)</p>
+			<li><p>If you're on Mac there should be one in the app store</p>
+			<li><p>If you're on Linux, I hope to God you know what to do
+			already</p>
+		</ul>
+		<li><p>Once that is done pop the card into the Pi, connect the
+		keyboard, ethernet, and display, then plug in the power cable</p>
+		<ul>
+			<li><p>You will be greeted by a “colorful” splash screen, then
+			a bunch of scrolling text (don't be alarmed, this is entirely
+			normal and actually means things are working)</p>
+			<li><p>Eventually you'll be sitting at a screen <a href="/stuff/images/raspi-config.png">like
+			this</a></p>
+			<ul>
+				<li><p>Select Expand File System to fill the rest of the space on
+				the SD card</p>
+				<li><p>You can change the users password if you want otherwise
+				credentials are [Username: pi | Password: raspberry]</p>
+				<li><p>Select Advanced Options, then Enable SSH (this allows
+				remote login), then disable Serial message on boot (will send
+				interference to Arduino)</p>
+				<li><p>Go back and select Finish then reboot.</p>
+			</ul>
+		</ul>
+		<li><p>Now you can either:</p>
+		<ul>
+			<li><p>Configure the Pi using a keyboard and tv.</p>
+			<li><p>Configure the Pi via SSH</p>
+		</ul>
+		<li><p>We're going to be working exclusively from the command line
+		so buckle up.</p>
+		<ul>
+			<li><p>Note: anything that looks <font face="FreeMono, monospace"><span style="background: transparent">like
+			this </span></font><font face="Liberation Serif, serif"><span style="background: transparent">is
+			meant to be commands that you should type character for character.</span></font></p>
+			<li><p>Login to the Pi using one of the above methods.</p>
+			<li><p>First make sure we're up-to-date: <font face="FreeMono, monospace">sudo
+			apt-get update; sudo apt-get upgrade</font></p>
+			<li><p><font face="Liberation Serif, serif">Now install Apache,
+			PHP, and Python's serial package: <font face="FreeMono, monospace">sudo
+			apt-get install apache2 php5 python-serial</font></font></p>
+			<ul>
+				<li><p><font face="Liberation Serif, serif">Fire up a browser to
+				the RPi's IP address (found with <font face="FreeMono, monospace">hostname
+				-I</font>) and you should Apache's default page.</font></p>
+			</ul>
+			<li><p><font face="Liberation Serif, serif">Now download all the
+			files from my repo: </font><font face="FreeMono, monospace">git
+			clone <a href="https://github.com/mynameistony/InternetLEDStrip.git">https://github.com/mynameistony/InternetLEDStrip.git</a></font></p>
+			<ul>
+				<li><p><font face="Liberation Serif, serif">This folder contains
+				everything you will need</font></p>
+				<ul>
+					<li><p><font face="Liberation Serif, serif">It has a folder
+					called 'Arduino' that contains the Arduino sketch and header
+					file</font></p>
+				</ul>
+			</ul>
+			<li><p><font face="Liberation Serif, serif">Now configure Apache
+			to serve that folder: <font face="FreeMono, monospace">sudo nano
+			/etc/apache2/apache2.conf</font></font></p>
+			<ul>
+				<li><p><font face="Liberation Serif, serif">Modify it to match
+				<a href="https://tonyrogers.ddns.net/stuff/apache-config.png">this
+				configuration</a></font></p>
+			</ul>
+			<li><p><font face="Liberation Serif, serif">Now restart the
+			server: <font face="FreeMono, monospace">sudo service apache2
+			restart</font></font></p>
+			<li><p><font face="Liberation Serif, serif">Now you must allow
+			access to the serial port (by default only root can read/write to
+			it)</font></p>
+			<ul>
+				<li><p><font face="FreeMono, monospace">sudo chmod 777
+				/dev/ttyAMA0</font></p>
+				<li><p><font face="Liberation Serif, serif">You should add that
+				line to /etc/rc.local so that it gets set on every boot</font></p>
+			</ul>
+			<li><p><font face="Liberation Serif, serif">We should also set up
+			the Pi with static IP so you can always find it</font></p>
+			<ul>
+				<li><p><font face="Liberation Serif, serif">First backup the
+				current configuration: <font face="FreeMono, monospace">sudo cp
+				/etc/network/interfaces ~/interfaces.backup </font>(just in case)</font></p>
+				<li><p><font face="Liberation Serif, serif">Now edit the
+				configuration: <font face="FreeMono, monospace">sudo nano
+				/etc/network/interfaces</font></font></p>
+				<li><p><font face="Liberation Serif, serif">You'll want to modify
+				the file to look <a href="https://tonyrogers.ddns.net/stuff/images/staticIP-config.png">like
+				this</a></font></p>
+			</ul>
+			<li><p><font face="Liberation Serif, serif">Now reboot and we
+			should be all set: </font><font face="FreeMono, monospace">sudo
+			reboot</font></p>
+		</ul>
+	</ul>
+	<li><p><font face="Liberation Serif, serif">Now connect the Rpi,
+	Arduino and LED strip as shown <a href="http://tonyrogers.ddns.net/addthislink">here</a></font></p>
+</ul>
+<p><br><br>
+</p>
+<p class="section-header" align="center"><font face="Liberation Serif, serif">That's it! That wasn't so hard, was it?</font></p>
+</body>
+</html>
