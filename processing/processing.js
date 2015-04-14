@@ -14,6 +14,16 @@ function printInfo(thisToggled,thisLevel){
   document.getElementById("currLevel").innerHTML = thisLevel;
 }
 
+//This is a vulnerabliity lol
+function updateToggled(newToggled){
+   printInfo(newToggled,currentLevel);
+}
+
+function levelWon(thisLevel){
+  document.getElementById("currLevel").innerHTML = thisLevel;
+}
+
+/****/
 (function(window, document, Math, undef) {
   var nop = function() {};
   var debug = function() {

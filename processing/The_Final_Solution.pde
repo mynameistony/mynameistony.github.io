@@ -82,10 +82,10 @@ void draw() {
     }
   }
 
-  if(numToggled == 0)
-    randomSpaces(level++);
-    
   printInfo(numToggled,level);
+  
+    
+  //printInfo(numToggled,level);
 }
 
 void keyPressed() {
@@ -123,6 +123,14 @@ void mousePressed() {
   
   if(thisY > 0)
     board[thisX][thisY - 1].toggle();
+
+  if(numToggled == 0){
+    levelWon(level);
+    randomSpaces(level++);
+    
+  }
+  
+  updateToggled(numToggled);
   
   //print(thisX);
   //print(":");
@@ -132,7 +140,20 @@ void mousePressed() {
 void randomSpaces(int currLevel){
   
   for(int i = 0; i < currLevel; i++){
-    board[int(random(0,BOARD_HEIGHT))][int(random(0,BOARD_WIDTH))].toggle();
+    randX = int(random(0,BOARD_HEIGHT));
+    randY = int(random(0,BOARD_WIDTH));
+    
+    if(randX < BOARD_HEIGHT-1)
+      board[randX+1][randY].toggle();
+      
+    if(randX > 0)
+      board[randX-1][randY].toggle();
+      
+    if(randY < BOARD_WIDTH-1)
+      board[randX][randY+1].toggle();
+      
+    if(randY > 0)
+      board[randX][randY-1].toggle();
   }  
   
 }
@@ -156,7 +177,7 @@ class Space {
 
     rect(x, y, TILE_WIDTH, TILE_HEIGHT);
   };
-
+  
   void toggle() {
         
     //print("Space #" + id + " is now "); 
