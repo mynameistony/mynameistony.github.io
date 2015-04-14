@@ -14,18 +14,19 @@ int g = 255;
 int b = 255;
 
 int numToggled = 0;
-int level = 0;
-boolean rainbow = false;
+int level = 1;
+
+int rainbow;
 
 int currRainbowPosition = 0;
 
 void setup() {
   //For some reason this breaks it
   //size(SCREEN_WIDTH, SCREEN_HEIGHT);
-  
   size(400, 400);
   background(0);
 
+  rainbow = 0;
   for (int r = 0; r < BOARD_HEIGHT; r++) {
     for (int c = 0; c < BOARD_WIDTH; c++) {
       board[r][c] = new Space(r * TILE_HEIGHT, c * TILE_WIDTH, (r * 100) + c); 
@@ -33,12 +34,13 @@ void setup() {
     }
   }
    
-  randomSpaces();
+  randomSpaces(level);
 }
 
 void draw() {
     
-  if(rainbow){
+  if(rainbow == 1){
+    
     switch(currRainbowPosition){
        //r -> b
       case 0:
@@ -76,21 +78,23 @@ void draw() {
   
   for (int r = 0; r < BOARD_HEIGHT; r++) {
     for (int c = 0; c < BOARD_WIDTH; c++) { 
-      //board[r][c].show();
+      board[r][c].show();
     }
   }
 
   if(numToggled == 0)
     randomSpaces(level++);
+    
+  printInfo(numToggled,level);
 }
 
 void keyPressed() {
   switch(key){
     case 'r':
-      if(rainbow)
-        rainbow = false;
+      if(rainbow == 1)
+        rainbow = 0;
       else
-        rainbow = true;
+        rainbow = 1;
     break; 
   }
   
@@ -105,7 +109,9 @@ void mousePressed() {
   int thisX = int(mouseX/(SCREEN_WIDTH/BOARD_WIDTH));
   int thisY = int(mouseY/(SCREEN_HEIGHT/BOARD_HEIGHT));
 
-  
+//  alert(r);
+//  alert(g);
+  //alert(b);  
   if(thisX < 10-1)
     board[thisX + 1][thisY].toggle();
   
@@ -152,18 +158,17 @@ class Space {
   };
 
   void toggle() {
-    
+        
     //print("Space #" + id + " is now "); 
     if (isToggled) {
-      numToggled--;
+      numToggled++;
       //print("off");
       isToggled = false;
     } else {
-      numToggled++;
+      numToggled--;
       //print("on");
       isToggled = true;
     }
-
     this.show();
   };
 

@@ -9,6 +9,10 @@
     http://processingjs.org
 
 ***/
+function printInfo(thisToggled,thisLevel){
+  document.getElementById("numToggled").innerHTML = thisToggled;
+  document.getElementById("currLevel").innerHTML = thisLevel;
+}
 
 (function(window, document, Math, undef) {
   var nop = function() {};

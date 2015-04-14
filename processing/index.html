@@ -65,8 +65,50 @@ function getProcessingSketchId () { return 'TheFinalSolution'; }
 					<p>JavaScript is required to view the contents of this page.</p>
 				</noscript>
 	    	</div>
+	    	<p>
+	    		<p>
+	    		Tiles Lefts: <b id="numToggled">1</b>
+	    		</p>
+
+	    		<p>
+	    		Current Level: <b id="currLevel">1</b>
+	    		</p>
+
+	    		<p>
+	    		Time Wasted: <b id="minutesWasted">0</b>:<b id="secondsWasted">0</b>
+	    		<script type="text/javascript">
+    				function updateTime(){
+				  			var lastSec = document.getElementById("secondsWasted").innerHTML;
+
+				  			var lastMin = document.getElementById("minutesWasted").innerHTML;
+
+				  				lastSec++;
+
+				  				if(lastSec < 10)
+				  					lastSec = "0" + lastSec;
+
+				  				if(lastSec == 60){
+				  					lastSec = 0;
+				  					lastMin++;
+				  				}
+				  				document.getElementById("secondsWasted").innerHTML = lastSec;
+				  				document.getElementById("minutesWasted").innerHTML = lastMin;
+					}
+					setInterval(updateTime,1000);
+				</script>
+	    		</p>
+	    	</p>	    	
+	    	
 			<h1>The_Final_Solution</h1>
-    		<p id="description"></p>
+    		<p id="description">
+    			<p>
+    				The object of the game is simple, eliminate all colored tiles. Pro-tip: You can't.
+    			</p>
+
+    			<p> Bonus: Press 'r' for rainbow mode.
+    			</p>
+    			
+    		</p>
 			<p id="sources">Source code: <a href="The_Final_Solution.pde">The_Final_Solution</a> </p>
 			<p>
 			Built with <a href="http://processing.org" title="Processing">Processing</a>
