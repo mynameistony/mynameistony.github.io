@@ -14,6 +14,9 @@ int g = 255;
 int b = 255;
 
 int numToggled = 0;
+
+int totalClicks = 0;
+
 int level = 1;
 
 int rainbow;
@@ -35,8 +38,10 @@ void setup() {
   }
    
   
-  startLevel = levelSet();
-  
+  startLevel = getLevel();
+  totalClicks = getClicks();
+  setClicks(totalClicks);
+
   if(startLevel > 0){
     setLevel(startLevel);
   }
@@ -48,8 +53,9 @@ void setup() {
 
 void draw() {
   
-  
-    
+  if(timeToAnnoy()){
+    randomSpaces(1);
+  }    
   if(rainbow == 1){
     
     switch(currRainbowPosition){
@@ -139,7 +145,7 @@ void mousePressed() {
     randomSpaces(level++);
     updateLevel(level);
   }
-    
+  setClicks(++totalClicks);    
   updateToggled(numToggled);
   
   //print(thisX);
