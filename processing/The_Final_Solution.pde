@@ -40,6 +40,9 @@ void setup() {
   if(startLevel > 0){
     setLevel(startLevel);
   }
+  else{
+    setLevel(level); 
+  }
  
 }
 
