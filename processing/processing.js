@@ -9,21 +9,46 @@
     http://processingjs.org
 
 ***/
-function printInfo(thisToggled,thisLevel){
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+} 
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+} 
+function levelSet(){
+  var currLevel = getCookie("level");
+  //alert("Resuming level "+ currLevel);
+  
+  document.getElementById("currLevel").innerHTML = currLevel;
+  document.getElementById("secondsWasted").innerHTML = getCookie("lastSec");
+  document.getElementById("minutesWasted").innerHTML = getCookie("lastMin");
+
+  return currLevel;
+}
+
+function printInfo(thisToggled){
   document.getElementById("numToggled").innerHTML = thisToggled;
-  document.getElementById("currLevel").innerHTML = thisLevel;
+}
+
+function updateLevel(newLevel){
+  document.getElementById("currLevel").innerHTML = newLevel;
+  setCookie("level",newLevel,30);
 }
 
 //This is a vulnerabliity lol
 function updateToggled(newToggled){
-   printInfo(newToggled,currentLevel);
+   printInfo(newToggled);
 }
-
-function levelWon(thisLevel){
-  document.getElementById("currLevel").innerHTML = thisLevel;
-}
-
-/****/
 (function(window, document, Math, undef) {
   var nop = function() {};
   var debug = function() {

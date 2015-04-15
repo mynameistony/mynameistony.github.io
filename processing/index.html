@@ -67,49 +67,46 @@ function getProcessingSketchId () { return 'TheFinalSolution'; }
 	    	</div>
 	    	<p>
 	    		<p>
-	    		Tiles Lefts: <b id="numToggled">1</b>
+	    		Tiles Lefts: <b id="numToggled"></b>
 	    		</p>
 
 	    		<p>
-	    		Current Level: <b id="currLevel">1</b>
+	    		Current Level: <b id="currLevel"></b>
 	    		</p>
 
 	    		<p>
-	    		Time Wasted: <b id="minutesWasted">0</b>:<b id="secondsWasted">0</b>
+	    		Time Wasted: <b id="minutesWasted"></b>:<b id="secondsWasted"></b>
 	    		<script type="text/javascript">
-    				function updateTime(){
-				  			var lastSec = document.getElementById("secondsWasted").innerHTML;
+      				function updateTime(){
+			  			var newSec = document.getElementById("secondsWasted").innerHTML;
 
-				  			var lastMin = document.getElementById("minutesWasted").innerHTML;
+			  			var newMin = document.getElementById("minutesWasted").innerHTML;
 
-				  				lastSec++;
 
-				  				if(lastSec < 10)
-				  					lastSec = "0" + lastSec;
+			  				newSec++;
 
-				  				if(lastSec == 60){
-				  					lastSec = 0;
-				  					lastMin++;
-				  				}
-				  				document.getElementById("secondsWasted").innerHTML = lastSec;
-				  				document.getElementById("minutesWasted").innerHTML = lastMin;
+			  				if(newSec < 10)
+			  					newSec = "0" + newSec;
+
+			  				if(newSec == 60){
+			  					newSec = 0;
+			  					newMin++;
+			  				}
+			  				document.getElementById("secondsWasted").innerHTML = newSec;
+			  				document.getElementById("minutesWasted").innerHTML = newMin;	
+
+			  				setCookie("lastMin",newMin,30);
+			  				setCookie("lastSec",newSec,30);
+			  			
+
 					}
 					setInterval(updateTime,1000);
 				</script>
 	    		</p>
-	    	</p>		    	
+	    	</p>	    	    	
+	    	
 			<h1>The_Final_Solution</h1>
-    		<p id="description">
-    				
-    			<p>
-    			The object of the game is simple, eliminate all colored tiles.
-    			</p>
-
-    			<p> 
-    				Bonus: Press 'r' for rainbow mode.
-    			</p>
-    			
-    		</p>
+    		<p id="description"></p>
 			<p id="sources">Source code: <a href="The_Final_Solution.pde">The_Final_Solution</a> </p>
 			<p>
 			Built with <a href="http://processing.org" title="Processing">Processing</a>

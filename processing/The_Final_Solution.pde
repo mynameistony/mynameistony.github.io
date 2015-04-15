@@ -34,10 +34,18 @@ void setup() {
     }
   }
    
-  randomSpaces(level);
+  
+  startLevel = levelSet();
+  
+  if(startLevel > 0){
+    setLevel(startLevel);
+  }
+ 
 }
 
 void draw() {
+  
+  
     
   if(rainbow == 1){
     
@@ -82,7 +90,7 @@ void draw() {
     }
   }
 
-  printInfo(numToggled,level);
+  
   
     
   //printInfo(numToggled,level);
@@ -125,17 +133,36 @@ void mousePressed() {
     board[thisX][thisY - 1].toggle();
 
   if(numToggled == 0){
-    levelWon(level);
     randomSpaces(level++);
-    
+    updateLevel(level);
   }
-  
+    
   updateToggled(numToggled);
   
   //print(thisX);
   //print(":");
   //print(thisY);
-}  
+}
+
+void setLevel(int newLevel){
+  level = newLevel;
+  clearBoard();
+  randomSpaces(level);
+}
+
+void clearBoard(){
+  for (int r = 0; r < BOARD_HEIGHT; r++) {
+    for (int c = 0; c < BOARD_WIDTH; c++) {
+      board[r][c] = new Space(r * TILE_HEIGHT, c * TILE_WIDTH, (r * 100) + c); 
+      board[r][c].show();
+    }
+  }
+  
+  numToggled = 0;
+   
+}
+
+
 
 void randomSpaces(int currLevel){
   
