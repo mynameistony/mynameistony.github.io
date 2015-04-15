@@ -7,7 +7,7 @@
  
    }
   else{
-    var rate = 5000-(2*getCookie("level"));
+    var rate = 5000-(50*getCookie("level"));
     clearInterval(annoyanceInterval);
     annoyanceInterval = setInterval(setAnnoy,rate);
     document.getElementById("annoyRate").innerHTML = rate + " ms";
@@ -111,7 +111,7 @@ function updateLevel(newLevel){
     document.getElementById("annoyRate").innerHTML = "Off";
   }
   else{
-   var rate = 5000-(2*newLevel);
+   var rate = 5000-(50*newLevel);
     clearInterval(annoyanceInterval);
     annoyanceInterval = setInterval(setAnnoy,rate);
     document.getElementById("annoyRate").innerHTML = rate + " ms";  
