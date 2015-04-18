@@ -1,17 +1,55 @@
- function toggleAnnoyance(){
+var optionsHidden = true;
 
+function toggleOptions(){
+
+  var newStyle = "visibility:";
+  if(optionsHidden){
+    newStyle += "visible";
+    optionsHidden = false;
+  }else{
+    newStyle += "hidden";
+    optionsHidden = true;
+  }
+
+  document.getElementById("options").style = newStyle;
+}
+
+function fuck(){
+  var newLevel = document.getElementById("newLevel").value;
+
+  
+  location.reload();
+  updateLevel(newLevel);
+
+}
+
+ function toggleAnnoyance(){
   if(getCookie("dontannoy") == "no"){
     clearInterval(annoyanceInterval);
+
     document.getElementById("annoyRate").innerHTML = "Off";
+
     setCookie("dontannoy","yes",30);
+
+    document.getElementById("annoy").style = "color:red;";
+
+    alert("Annonyance disabled");
  
    }
   else{
     var rate = 5000-(50*getCookie("level"));
+
     clearInterval(annoyanceInterval);
+
     annoyanceInterval = setInterval(setAnnoy,rate);
+
     document.getElementById("annoyRate").innerHTML = rate + " ms";
+
     setCookie("dontannoy","no",30);
+
+    document.getElementById("annoy").style = "color:green;";
+
+    alert("Annonyance enabled");
   }
 }
 
@@ -41,6 +79,7 @@ function clearStats(){
    setCookie("numClicks",0,30);   
    setCookie("dontannoy","yes",30);   
 
+   location.reload();
 }
 
 

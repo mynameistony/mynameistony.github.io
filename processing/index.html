@@ -57,6 +57,16 @@ function getProcessingSketchId () { return 'TheFinalSolution'; }
 	<body>
 		<div id="content">
 			<div>
+				<h1>The_Final_Solution</h1>
+	    		<p id="description"></p>
+
+				<p id="sources">Source code: <a href="The_Final_Solution.pde">The_Final_Solution</a> <a href="stuff.js">stuff.js</a> </p>
+
+				<p>
+				Built with <a href="http://processing.org" title="Processing">Processing</a>
+				and <a href="http://processingjs.org" title="Processing.js">Processing.js</a>
+				</p>			
+
 				<canvas id="TheFinalSolution" data-processing-sources="The_Final_Solution.pde" 
 						width="400" height="400">
 					<p>Your browser does not support the canvas tag.</p>
@@ -74,6 +84,7 @@ function getProcessingSketchId () { return 'TheFinalSolution'; }
 	    		<p>
 	    		Level: <b id="currLevel"></b>
 	    		</p>
+
 	    		<p>
 	    		Total Clicks: <b id="totalClicks"></b>
 	    		</p>
@@ -82,22 +93,29 @@ function getProcessingSketchId () { return 'TheFinalSolution'; }
 	    		Time Wasted: <b id="minutesWasted"></b>:<b id="secondsWasted"></b>
 	    		</p>
 
-	    		<p>
-	    		<button onclick="clearStats()">Clear Stats</button><br>
-	    		</p>
-	    		<p>
-	    		<input type="checkbox" onchange="toggleAnnoyance()" id="annoy" value="yes">Annoyance [<b id="annoyRate"></b>] (Still buggy)
-	    		</p>
-	    		
-	    	</p>	    	    	
+	    		<p>  		
+		    		<button id="optionToggle" onclick="toggleOptions()">
+		    			Options
+		    		</button>
+		    	</p>
 
-			<h1>The_Final_Solution</h1>
-    		<p id="description"></p>
-			<p id="sources">Source code: <a href="The_Final_Solution.pde">The_Final_Solution</a> <a href="stuff.js">stuff.js</a> </p>
-			<p>
-			Built with <a href="http://processing.org" title="Processing">Processing</a>
-			and <a href="http://processingjs.org" title="Processing.js">Processing.js</a>
-			</p>
+		    	<div id="options" style="visibility:hidden">
+		    		<p>
+			    		<input id="newLevel" type="number" value="1" placeholder="Level Select">
+
+			    		<button onclick="fuck()">Select Level</button>
+		    		</p>
+		    	
+		    		<p>
+		    			<button onclick="toggleAnnoyance()" id="annoy">[<b id="annoyRate">Toggle Annoyance</b>]</button>
+		    		</p>
+
+		    		<p>
+		    			<button onclick="clearStats()">Clear Stats</button>
+		    		</p>	    		
+	    		</div>	    	    	
+	    	</p>
+			
 		</div>
 	</body>
 </html>
