@@ -1,0 +1,28 @@
+.header{
+	text-align: center;
+	color: grey;
+	background-color: grey;
+	padding: 10;
+}
+
+.header-text{
+	font-size: 45;
+	color: black;
+}
+
+.nav-bar{
+	color: black;
+	background-color: lightgrey;
+	width: 30%;
+	height: 30px;
+	text-align: center;
+	font-size: 15;
+}
+
+.footer{
+	color: orange;
+}
+
+body{
+	background-color: lightgrey;
+}
