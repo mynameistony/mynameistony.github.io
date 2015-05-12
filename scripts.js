@@ -1,14 +1,31 @@
 var navTitles = ["Navigate...","Home", "Other Site", "Portfolio", "About Me"];
 var navLinks  = ["","/","http://tonyrogers.ddns.net","/portfolio.html","/about.html"];
 
+function setStyleSheet(){
+	var thisStyle = document.createElement("link");
+ 	thisStyle.rel = "stylesheet";
+ 	
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ){
+		// alert("Mobile");
+ 		thisStyle.href="styles_mobile.css";
+	}
+	else{
+		// alert("PC");
+		thisStyle.href="styles.css";
+	}
+
+	document.body.appendChild(thisStyle);
+
+}
+
 function outputHeader(title,headerText){
-	
+	setStyleSheet();
 	var thisHeader = document.getElementById("header");
 
 	var thisTitle = document.createElement("title");
 	thisTitle.innerHTML = title;
 
-	var thisHeaderText = document.createElement("h2");
+	var thisHeaderText = document.createElement("div");
 	thisHeaderText.className = "header-text";
 	thisHeaderText.innerHTML = headerText;
 
@@ -28,7 +45,6 @@ function outputHeader(title,headerText){
 
 		thisNav.appendChild(thisNavItem);
 	}
-
 
 
 	thisHeader.appendChild(thisTitle);
