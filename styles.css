@@ -1,6 +1,6 @@
 .header{
 	text-align: center;
-	color: grey;
+	color: black;
 	background-color: grey;
 	padding: 10;
 }
@@ -21,9 +21,13 @@
 }
 
 .footer{
-	color: orange;
+	text-align: center;
+	color: black;
+	background-color: grey;
+	padding: 10;
 }
 
 body{
 	background-color: lightgrey;
+	font-family: Comic-Sans MS;
 }

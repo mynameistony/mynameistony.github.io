@@ -53,6 +53,14 @@ function outputHeader(title,headerText){
 }
 
 function outputFooter(){
+	var thisFooter = document.getElementById("footer");
 
+	var footerText = document.createElement("div");
+	footerText.innerHTML = "<a href=/privacy>Privacy Policy & Terms</a> | <a href=/contact>Contact Me</a>";
+
+	var footerText1 = document.createElement("div");
+	footerText1.innerHTML = "Created 2015 by Tony Rogers";
+
+	thisFooter.appendChild(footerText);
+	thisFooter.appendChild(footerText1);
 }
-
