@@ -1,3 +1,6 @@
+.body{
+	font-size: 25px;
+}
 .header{
 	text-align: center;
 	color: black;
@@ -6,7 +9,7 @@
 }
 
 .header-text{
-	font-size: 25;
+	font-size: 25px;
 	padding-bottom: 10px;
 	color: black;
 }

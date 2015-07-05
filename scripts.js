@@ -56,7 +56,7 @@ function outputFooter(){
 	var thisFooter = document.getElementById("footer");
 
 	var footerText = document.createElement("div");
-	footerText.innerHTML = "<a href=/privacy>Privacy Policy & Terms</a> | <a href=/contact>Contact Me</a>";
+	footerText.innerHTML = "<a href=http://tonyrogers.ddns.net>Contact Me</a>";
 
 	var footerText1 = document.createElement("div");
 	footerText1.innerHTML = "Created 2015 by Tony Rogers";
